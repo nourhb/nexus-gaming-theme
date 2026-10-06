@@ -1,0 +1,30 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"nexus-header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group nexus-page">
+	<!-- wp:heading {"level":1,"fontSize":"2x-large"} -->
+	<h1 class="wp-block-heading has-2-x-large-font-size">Search Results</h1>
+	<!-- /wp:heading -->
+	<!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonUseIcon":true,"style":{"border":{"radius":"10px"}}} /-->
+	<!-- wp:query {"queryId":2,"query":{"perPage":10,"postType":"post","order":"desc","orderBy":"relevance"},"inherit":true} -->
+	<div class="wp-block-query">
+		<!-- wp:post-template -->
+		<!-- wp:group {"className":"nexus-glow-card","style":{"border":{"radius":"14px","width":"1px"},"color":{"border":"#2a2a44","background":"#131322"},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}}} -->
+		<div class="wp-block-group nexus-glow-card has-border-color has-background" style="border-radius:14px;border-color:#2a2a44;background-color:#131322;border-width:1px">
+			<!-- wp:post-title {"isLink":true,"fontSize":"large"} /-->
+			<!-- wp:post-excerpt /-->
+			<!-- wp:post-date {"fontSize":"small","textColor":"muted"} /-->
+		</div>
+		<!-- /wp:group -->
+		<!-- /wp:post-template -->
+		<!-- wp:query-no-results -->
+		<!-- wp:paragraph {"align":"center"} -->
+		<p class="has-text-align-center">No results. The loot you seek is in another dungeon.</p>
+		<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

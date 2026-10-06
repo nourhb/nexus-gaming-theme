@@ -1,0 +1,270 @@
+/*
+Theme Name: Nexus
+Theme URI: https://github.com/Nourhb/nexus-gaming-theme
+Author: Nour El Houda Bouajila
+Author URI: https://nour-el-houda-bouajila.rf.gd/
+Description: Nexus is a high-voltage Full Site Editing theme for gaming platforms, esports teams, game review sites and gaming communities. Dark neon aesthetic, HUD-inspired details, ready-made patterns for trending games, leaderboards, tournaments, live streams, reviews and more.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: nexus
+Tags: gaming, esports, dark, one-column, block-patterns, block-styles, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks
+
+Nexus, (C) 2026 Nour El Houda Bouajila
+Nexus is distributed under the terms of the GNU GPL.
+*/
+
+/* ============================================================
+   NEXUS — front-end polish
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+
+body {
+	overflow-x: clip;
+}
+
+/* Ambient glow backdrop */
+.nexus-page {
+	position: relative;
+}
+
+/* --- Glitch headline effect --- */
+.nexus-glitch {
+	position: relative;
+	display: inline-block;
+}
+.nexus-glitch::before,
+.nexus-glitch::after {
+	content: attr(data-text);
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	clip-path: inset(0 0 55% 0);
+	opacity: 0;
+}
+.nexus-glitch:hover::before,
+.nexus-glitch:focus-visible::before {
+	opacity: .85;
+	color: var(--wp--preset--color--neon-cyan);
+	transform: translate(-3px, -2px);
+	animation: nexus-glitch-a .45s steps(2, end) infinite;
+}
+.nexus-glitch:hover::after,
+.nexus-glitch:focus-visible::after {
+	opacity: .85;
+	color: var(--wp--preset--color--neon-pink);
+	transform: translate(3px, 2px);
+	clip-path: inset(45% 0 0 0);
+	animation: nexus-glitch-b .45s steps(2, end) infinite;
+}
+@keyframes nexus-glitch-a {
+	0%, 100% { transform: translate(-3px, -2px); }
+	50% { transform: translate(-6px, 1px); }
+}
+@keyframes nexus-glitch-b {
+	0%, 100% { transform: translate(3px, 2px); }
+	50% { transform: translate(6px, -1px); }
+}
+
+/* --- Neon hover glow for cards --- */
+.nexus-glow-card {
+	transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.nexus-glow-card:hover {
+	transform: translateY(-6px);
+	border-color: var(--wp--preset--color--neon-cyan) !important;
+	box-shadow: 0 0 24px rgba(0, 229, 255, .35), 0 18px 40px rgba(0, 0, 0, .55);
+}
+
+/* --- LIVE dot pulse --- */
+.nexus-live-dot {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+}
+.nexus-live-dot::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #ff3b5c;
+	box-shadow: 0 0 0 0 rgba(255, 59, 92, .7);
+	animation: nexus-pulse 1.6s ease-out infinite;
+}
+@keyframes nexus-pulse {
+	70% { box-shadow: 0 0 0 12px rgba(255, 59, 92, 0); }
+	100% { box-shadow: 0 0 0 0 rgba(255, 59, 92, 0); }
+}
+
+/* --- Headline ticker --- */
+.nexus-ticker {
+	overflow: hidden;
+	white-space: nowrap;
+}
+.nexus-ticker-track {
+	display: inline-flex;
+	gap: 3rem;
+	padding-right: 3rem;
+	animation: nexus-ticker 28s linear infinite;
+	will-change: transform;
+}
+.nexus-ticker:hover .nexus-ticker-track {
+	animation-play-state: paused;
+}
+@keyframes nexus-ticker {
+	to { transform: translateX(-50%); }
+}
+
+/* --- Neon button shine --- */
+.nexus-btn-neon .wp-block-button__link {
+	position: relative;
+	overflow: hidden;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+.nexus-btn-neon .wp-block-button__link::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -80%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+	transform: skewX(-20deg);
+	transition: left .6s ease;
+}
+.nexus-btn-neon .wp-block-button__link:hover::after {
+	left: 130%;
+}
+
+/* --- Image zoom on hover --- */
+.nexus-zoom figure img,
+.nexus-zoom img {
+	transition: transform .5s ease;
+}
+.nexus-zoom:hover figure img,
+.nexus-zoom:hover img {
+	transform: scale(1.06);
+}
+
+/* --- Rank badge --- */
+.nexus-rank {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 900;
+	line-height: 1;
+	text-align: center;
+}
+
+/* --- Level bar --- */
+.nexus-level-bar {
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, .12);
+	overflow: hidden;
+}
+.nexus-level-bar > span {
+	display: block;
+	height: 100%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, var(--wp--preset--color--neon-cyan), var(--wp--preset--color--neon-pink));
+	box-shadow: 0 0 12px rgba(0, 229, 255, .6);
+}
+
+/* --- Back to top --- */
+.nexus-back-top {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 60;
+	width: 48px;
+	height: 48px;
+	border: none;
+	border-radius: 12px;
+	background: var(--wp--preset--color--neon-pink);
+	color: #fff;
+	font-size: 1.35rem;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(12px);
+	transition: opacity .3s ease, transform .3s ease, visibility .3s;
+	box-shadow: 0 0 18px rgba(255, 46, 136, .55);
+}
+.nexus-back-top.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.nexus-back-top:hover {
+	background: var(--wp--preset--color--neon-cyan);
+	box-shadow: 0 0 18px rgba(0, 229, 255, .55);
+}
+
+/* --- Scroll reveal --- */
+.nexus-reveal {
+	opacity: 0;
+	transform: translateY(26px);
+	transition: opacity .7s ease, transform .7s ease;
+}
+.nexus-reveal.is-in {
+	opacity: 1;
+	transform: none;
+}
+
+/* --- Sticky header shadow on scroll --- */
+.nexus-header.is-scrolled {
+	box-shadow: 0 8px 32px rgba(0, 0, 0, .6);
+}
+
+/* --- Scanline overlay for hero --- */
+.nexus-scanlines::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: repeating-linear-gradient(
+		to bottom,
+		transparent 0 3px,
+		rgba(0, 0, 0, .14) 3px 4px
+	);
+}
+
+/* --- Skip link --- */
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: -100px;
+	z-index: 100;
+	background: var(--wp--preset--color--neon-cyan);
+	color: #0a0a12;
+	padding: .75rem 1.25rem;
+	font-weight: 700;
+	border-radius: 8px;
+	transition: top .2s ease;
+}
+.skip-link:focus {
+	top: 1rem;
+}
+
+/* --- Print --- */
+@media print {
+	.nexus-ticker, .nexus-back-top, .wp-block-navigation { display: none !important; }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	*,
+	*::before,
+	*::after {
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .01ms !important;
+	}
+	.nexus-reveal { opacity: 1; transform: none; }
+}

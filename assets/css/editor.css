@@ -1,0 +1,53 @@
+/*
+ * Nexus — editor styles.
+ * Mirrors the dark neon canvas so the block editor previews content accurately.
+ */
+
+body {
+	background-color: #0a0a12;
+	color: #f4f6ff;
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4 {
+	font-family: "Orbitron", "Segoe UI", sans-serif;
+}
+
+.editor-styles-wrapper .wp-block-button__link {
+	border-radius: 10px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-family: "Orbitron", "Segoe UI", sans-serif;
+	font-weight: 700;
+}
+
+.editor-styles-wrapper .wp-block-table table {
+	border-color: rgba(255, 255, 255, 0.14);
+}
+
+.editor-styles-wrapper .wp-block-quote {
+	border-left: 4px solid #00e5ff;
+	background: #131322;
+	padding: 1.75rem;
+}
+
+/* Block-style previews registered in functions.php */
+.is-style-nexus-hud-card {
+	border: 1px solid #2a2a44;
+	border-radius: 16px;
+	background: #131322;
+	padding: 1.75rem;
+}
+
+.is-style-nexus-rank-badge {
+	display: inline-block;
+	font-family: "Orbitron", sans-serif;
+	font-weight: 900;
+	background: linear-gradient(135deg, #00e5ff, #7c5cff);
+	color: #0a0a12;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+}
